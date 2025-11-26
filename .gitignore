@@ -1,0 +1,11 @@
+.env
+.env.local
+*.db
+__pycache__/
+*.pyc
+.venv/
+venv314/
+*.egg-info/
+.DS_Store
+.idea/
+.vscode/settings.json
