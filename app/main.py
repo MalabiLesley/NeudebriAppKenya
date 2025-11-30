@@ -24,7 +24,10 @@ app = FastAPI(
 )
 
 # CORS
-allowed_origins = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000").split(",")
+allowed_origins = os.getenv(
+    "CORS_ORIGINS",
+    "http://localhost:3000,http://127.0.0.1:3000,http://192.168.0.107:3000,https://neudebri-app-frontend.vercel.app"
+).split(",")
 
 app.add_middleware(
     CORSMiddleware,
@@ -58,6 +61,10 @@ def root():
         "version": "1.0.0",
         "environment": os.getenv("ENVIRONMENT", "development")
     }
+
+@app.get("/api/status")
+def status():
+    return {"status": "ok", "service": "Nuedebri Health App Kenya"}
 
 @app.get("/health")
 def health():
